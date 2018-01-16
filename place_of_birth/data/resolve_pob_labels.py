@@ -62,9 +62,11 @@ if __name__ == "__main__":
 
         hits += 1
         person_start = text.index(person)
-        person_end = person_start + len(person)
+        # XXX: snorkel spans don't use python slicing (i.e. up to end of range)
+        # - so do minus 1 here
+        person_end = person_start + len(person) - 1
         pob_start = text.index(pob)
-        pob_end = pob_start + len(pob)
+        pob_end = pob_start + len(pob) - 1
 
         # Get stable ids
         person_sid = '{}::span:{}:{}'.format(docid, person_start, person_end)
