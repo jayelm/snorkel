@@ -55,7 +55,7 @@ if __name__ == "__main__":
                 'obj': obj_name,
                 'n_raters': len(judgments),
                 'rater_percent': sum(judgments) / len(judgments),
-                'overall': (sum(judgments) / len(judgments)) > 0.5
+                'overall': 1 if ((sum(judgments) / len(judgments)) > 0.5) else -1
             }
             fout.write('{}\t{}\n'.format(i, dat['text']))
             jsonout.write('{}\n'.format(json.dumps(dat)))
